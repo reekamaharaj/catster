@@ -18,9 +18,7 @@ Catster hopes to help you find your fur companion. Answer a few questions and we
 ## Role in Development
 
 -------Instructions for homework
-- [Demo](https://friend-finder-fsf.herokuapp.com/)
-- Survey has 10 questions
-    - 1-5 scale for agrees to disagrees
+
 - Scores to find most compatible
     - Convert user scores into an array of numbers.
     - Compare the difference between the user and the cat. Difference between each question. Add up the differences into a totalDifference value, use the absolute value. Do this for all cats in the file
@@ -29,11 +27,11 @@ Catster hopes to help you find your fur companion. Answer a few questions and we
         - Show the name and picture of the closest match
     - Deploy to Heroku
 
-[ ] create the html pages
-[ ] home.html
-[ ] survey.html
-[ ] create the survey questions
-[ ] create the adoptable cat profiles, with questions answered and pictures
+[x] create the html pages
+[x] home.html
+[x] survey.html
+[x] create the survey questions
+[x] create the adoptable cat profiles, with questions answered and pictures
 [ ] code the logic
 [ ] deploy to heroku
 
