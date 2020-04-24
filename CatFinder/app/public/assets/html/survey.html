@@ -65,7 +65,7 @@
 <script type="text/javascript">
     $(".submit").on("click", function (event) {
         event.preventDefault();
-
+        
         let newPerson = {
             name: $("#name").val().trim(),
             photo: $("#img").val().trim(),
@@ -79,6 +79,8 @@
             $("#name").val("");
             $("#img").val().trim();
         });
+
+        //need to get the value for each question, id for each question is unique to the question ex. id=q1 need the selected option value. pushed into the scores array. Then need to compare the scores array to all the cat array data and find the best match.
     });
 </script>
 
