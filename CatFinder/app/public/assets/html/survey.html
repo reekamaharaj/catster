@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/assets/css/output.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="static/assets/css/output.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Survey</title>
 </head>
@@ -12,66 +12,73 @@
 <body class="h-full bg-gray-700">
     <div class="flex py-8 px-4 justify-center">
         <div class="flex flex-col w-full max-w-4xl">
+            <div class="w-full h-64 bg-top bg-cover rounded" style="
+                        background-image: url(static/assets/images/emandyu.jpeg);
+                    "></div>
 
-            <div class="w-full h-64 bg-top bg-cover rounded" style="background-image: url(static/assets/images/emandyu.jpeg)"></div>
+            <div id="surveyQs" class="w-full">
+                <div class="bg-gray-300 rounded shadow-lg p-8 my-4 lg:w-full md:my-4 mb-4 md:mb-0">
+                    <h1 class="block w-full text-center text-gray-darkest mb-6 text-4xl font-bold">
+                        Survey
+                    </h1>
 
-            <div id="surveyQs" class="flex items-center h-screen w-full bg-gray-lighter">
-                <div class="bg-gray-100 rounded shadow-lg p-8 m-4 lg:max-w-full md:max-w-sm md:mx-auto">
-                    <h1 class="block w-full text-center text-grey-darkest mb-6 text-4xl font-bold">Survey</h1>
-            
-                    <form role="form" class="mb-4 md:flex md:flex-wrap md:justify-between" action="/" method="post">
-            
-                    <div class="flex flex-col mb-4 md:w-full">
-                        <label class="mb-2 uppercase tracking-wide text-grey-darkest" for="name">Name (Required) </label>
-                        <input class="border py-2 px-3 text-grey-darkest md:mr-2 w-1/2" placeholder="Jane Doe" type="text" name="name" id="name">
-                    </div>
-                    
-                    <div class="flex flex-col mb-4 md:w-full">
-                        <label class="mb-2 uppercase text-grey-darkest" for="img">Link to Photo Image (Required)</label>
-                        <input class="border py-2 px-3 text-grey-darkest md:mr-2 w-1/2" placeholder="IMG link" type="text" name="img" id="img">
-                    </div>
-            
-                    <div class="questions" id="survey"> </div>
+                    <form role="form" class="mb-4 md:flex md:flex-wrap md:justify-between" action="/" method="POST">
+                        <div class="flex flex-col mb-4 md:w-full">
+                            <label class="mb-2 uppercase tracking-wide text-gray-darkest" for="name">Name (Required)
+                            </label>
+                            <input class="border py-2 px-3 text-white bg-gray-700 md:mr-2 w-1/2" placeholder="Jane Doe"
+                                type="text" name="name" id="name" />
+                        </div>
+
+                        <div class="flex flex-col mb-4 md:w-full">
+                            <label class="mb-2 uppercase text-gray-darkest" for="img">Link to Photo Image
+                                (Required)</label>
+                            <input class="border py-2 px-3 text-white bg-gray-700 md:mr-2 w-1/2" placeholder="IMG link"
+                                type="text" name="img" id="img" />
+                        </div>
+
+                        <div class="questions" id="survey"></div>
                     </form>
-                    <button class="block bg-black hover:bg-grey-dark text-white uppercase text-lg mx-auto p-4 rounded" type="submit">Submit</button>
+                    <button class="submit block bg-black hover:bg-gray-dark text-white uppercase text-lg mx-auto p-4 rounded"
+                        type="submit">
+                        Submit
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div>
-        <div class="flex px-48 py-8 bg-gray-400 justify-center">
+    <footer class="w-full text-center">
+        <div class="flex py-2 bg-gray-400 justify-center">
             <p>
-                <a href="/api/cats" class="underline text-blue-800">API Catster List</a>
+                <a href="/api/cats" class="underline text-blue-500">API Catster List</a>
                 |
-                <a href="/api/persons" class="underline text-blue-800">API Person List</a>
+                <a href="/api/persons" class="underline text-blue-500">API Person List</a>
                 |
-                <a href="https://github.com/reekamaharaj/catster" class="underline text-blue-800">GitHub Repo</a>
+                <a href="https://github.com/reekamaharaj/catster" class="underline text-blue-500">GitHub Repo</a>
             </p>
         </div>
-    </div>
-
+    </footer>
 </body>
+
 <script type="text/javascript" src="static/assets/javascript/survey.js"></script>
 <script type="text/javascript">
     $(".submit").on("click", function (event) {
         event.preventDefault();
 
-        var newPerson = {
+        let newPerson = {
             name: $("#name").val().trim(),
             photo: $("#img").val().trim(),
         };
         console.log(newPerson);
 
-        $.post("/api/persons", newPerson,
-            function (data) {
-                //match with a cat
-                alert("We are matching you with your perfect cat now.");
+        $.post("/api/persons", newPerson, function (data) {
+            //match with a cat
+            alert("We are matching you with your perfect cat now.");
 
-                $("#name").val("");
-                $("#img").val().trim();
-            });
+            $("#name").val("");
+            $("#img").val().trim();
+        });
     });
-
 </script>
-</html>
+

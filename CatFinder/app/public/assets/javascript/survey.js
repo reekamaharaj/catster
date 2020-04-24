@@ -1,44 +1,42 @@
-const surveyQuestions = [   
-    'You are looking for a cat that does well with children.',
-    'You are looking for a cat that will get along with your cat(s).',
-    'You are looking for a cat that will get along with your dog(s).',
-    'You are looking for a cat that will be friendly with visitors.',
-    'You are looking for a social cat. One that likes to be where the people are.',
-    'You are looking for a cat that enjoys pets.',
-    'You are looking for a lapcat.',
-    'You are looking for a playful cat.',
-    'You are looking for a quiet cat.',
-    'You are looking for a cat that is vocal.'
-];
-
-const answers = [
-    'Select an Option', 
-    'Strongly Disagree', 
-    'Disagree', 
-    'Neutral', 
-    'Agree', 
-    'Strongly Agree'
+const surveyQuestions = [
+    "You are looking for a cat that does well with children.",
+    "You are looking for a cat that will get along with your cat(s).",
+    "You are looking for a cat that will get along with your dog(s).",
+    "You are looking for a cat that will be friendly with visitors.",
+    "You are looking for a social cat. One that likes to be where the people are.",
+    "You are looking for a cat that enjoys pets.",
+    "You are looking for a lapcat.",
+    "You are looking for a playful cat.",
+    "You are looking for a quiet cat.",
+    "You are looking for a cat that is vocal.",
 ];
 
 let questionContainer;
 let question;
+let answerArray = [];
 
-$('.document').ready(function(){
+$(".document").ready(function () {
     popSurvey();
 });
 
-function popSurvey(){
-    for (i = 0; i < surveyQuestions.length; i++){
+function popSurvey() {
+    for (i = 0; i < surveyQuestions.length; i++) {
         questionContainer = undefined;
-        question = undefined; 
+        question = undefined;
 
         questionContainer = $('<div class="flex flex-col mb-4 md:w-full">');
-        question = '<label class="mb-2 text-grey-darkest" for="question">' + surveyQuestions[i] + '</label>';
+        question =
+            '<label class="mb-2 text-gray-darkest" for="q' +
+            i +
+            '">' +
+            surveyQuestions[i] +
+            '</label><select class="form-select mt-1 block w-1/3 bg-gray-600 text-white" name="q' +
+            i +
+            '" id="q' +
+            i +
+            '"><option value="" selected disabled hidden>Select an Option</option><option value="1">Strongly Disagree</option><option value="2">Disagree</option><option value="3">Neutral</option><option value="4">Agree</option><option value="5">Strongly Agree</option></select>';
 
-        // for (i = 0; i < 5; i++){
-        //         answerArray[i] = '<label class="inline-flex items-center px-4 py-2 font-bold text-orange-800" id="' + i + '"><input type="radio" class="' + i + '" name=' + i + '" value="' + i + '" onClick="clicked(this.value, this.className)"></input><span class="ml-2 px-4 py-2 text-orange-800">' + answers[i] + '</span></label>';
-        //     }
         questionContainer.append(question);
-        $('#survey').append(questionContainer);
+        $("#survey").append(questionContainer);
     }
 }
