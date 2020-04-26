@@ -3,21 +3,36 @@
 // LOAD DATA
 const catData = require("../data/cats");
 const personData = require("../data/persons");
-let personArray = [ ];
-
 
 //Routing
 module.exports = function(app){
-    app.get("/api/cats", function(req,res){
+    app.get("/api/cats", function(_req,res){
         res.json(catData);
     });
 
-    app.get("/api/persons", function(req,res){
+    app.get("/api/persons", function(_req,res){
         res.json(personData);
     });
 
     app.post("/api/persons", function(req,res){
-        personArray.push(req.body);
-        res.json(true);
+        
+        let newPerson = {
+            name: req.body.name,
+            photo: req.body.img,
+            scores: [
+                req.body.q0,
+                req.body.q1,
+                req.body.q2,
+                req.body.q3,
+                req.body.q4,
+                req.body.q5,
+                req.body.q6,
+                req.body.q7,
+                req.body.q8,
+                req.body.q9
+            ]
+        }
+        personData.push(newPerson);
+        res.json(personData);
     });
 };

@@ -22,7 +22,7 @@
                         Survey
                     </h1>
 
-                    <form role="form" class="mb-4 md:flex md:flex-wrap md:justify-between" action="/" method="POST">
+                    <form role="form" class="mb-4 md:flex md:flex-wrap md:justify-between" id="survey" action="/api/persons" method="POST">
                         <div class="flex flex-col mb-4 md:w-full">
                             <label class="mb-2 uppercase tracking-wide text-gray-darkest" for="name">Name (Required)
                             </label>
@@ -38,11 +38,12 @@
                         </div>
 
                         <div class="questions" id="survey"></div>
-                    </form>
-                    <button class="submit block bg-black hover:bg-gray-dark text-white uppercase text-lg mx-auto p-4 rounded"
+                        <button class="submit block bg-black hover:bg-gray-dark text-white uppercase text-lg mx-auto p-4 rounded"
                         type="submit">
                         Submit
                     </button>
+                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -62,25 +63,4 @@
 </body>
 
 <script type="text/javascript" src="static/assets/javascript/survey.js"></script>
-<script type="text/javascript">
-    $(".submit").on("click", function (event) {
-        event.preventDefault();
-        
-        let newPerson = {
-            name: $("#name").val().trim(),
-            photo: $("#img").val().trim(),
-        };
-        console.log(newPerson);
-
-        $.post("/api/persons", newPerson, function (data) {
-            //match with a cat
-            alert("We are matching you with your perfect cat now.");
-
-            $("#name").val("");
-            $("#img").val().trim();
-        });
-
-        //need to get the value for each question, id for each question is unique to the question ex. id=q1 need the selected option value. pushed into the scores array. Then need to compare the scores array to all the cat array data and find the best match.
-    });
-</script>
 
