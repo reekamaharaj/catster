@@ -26,6 +26,8 @@ Catster hopes to help you find your fur companion. Answer a few questions and we
     - Display the best match in a modal display
         - Show the name and picture of the closest match
     - Deploy to Heroku
+    - Add to portfolio
+    - Update ReadMe file
 
 [x] create the html pages
 [x] home.html
