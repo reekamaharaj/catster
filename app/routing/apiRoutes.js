@@ -39,36 +39,20 @@ module.exports = function(app){
         res.sendFile(path.join(__dirname, "../public/assets/html/home.html"));
         }
     );
-        let diff = [ ];
+
     function match(person, cats){
         for(let i = 0; i < cats.length - 1; i++){
-            //for each cat
+            let diff = [ ];
+            //for each cat where i is the index for the single cat data
             for (let y = 0; y < cats[i].scores.length - 1; y++){
-                //get the scores in cat at i, and loop over each
-                
+                //get the scores in cat at i, and loop over each where y is the index for the current score
+                // console.log(cats[i].scores[y]);
+                //this does give a number
+                let compare = Math.abs(cats[i].scores[y] - person[y]);
+                diff.push(compare);
             }
+            console.log("these are the differences between person and cat " + cats[i].name + "value: " + diff);
         }
     }
 
 };
-
-
-//         function match(userScores, cats){
-//             let user = userScores
-//             let catData = cats;
-//             for (let i = 0; i < catData.length - 1; i++){
-//                 //for each cat in catData...
-//                 //go through each score...i will be the index for the current cat
-//                 for (let y = 0; y < catData[i].scores.length - 1; y++){
-//                     //for each score...get same score for user, y would be the index for the current question score
-//                     //new persons answer for question y
-//                     //compare to the catQA for question y..
-//                     let compare = Math.abs(catData[i].score[y] - user[y]);
-//                     console.log("compared values" + compare);
-//                     console.log(compare);
-//                 }
-//             }
-//             //take person score for question 1. subtract from cat score for question 1. All numbers will be absolute since we want the difference between the two numbers. 
-//         }
-
-//     }
