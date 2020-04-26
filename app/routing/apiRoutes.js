@@ -31,10 +31,10 @@ module.exports = function(app){
                 req.body.q8,
                 req.body.q9
             ]
-        }
+        };
         personData.push(newPerson);
         res.json("You will be matched... as soon at the matching system is functional. SORRY!");
         //the res.json will make the modal pop up with a match here
         //Need to write a function that will take the new person data and compare the scores with the current cats in the cat Data.
         //function will need to compare the difference between the users score and the cat score, for each question. Get the absolute value for all of these and then find the closest match. Display the information for the matched cat in a modal with name and picture. 
-};
+})};
