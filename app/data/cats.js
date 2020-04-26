@@ -70,33 +70,3 @@ let catArray = [
 ];
 
 module.exports = catArray;
-// {
-//     'name': '',
-//     'photo': '',
-//     'scores': [
-//         5,
-//         5,
-//         5,
-//         5,
-//         5,
-//         5,
-//         5,
-//         5,
-//         5,
-//         5
-//     ]
-// },
-
-// Questions
-// - 1 You are looking for a cat that does well with children.
-// - 2 You are looking for a cat that will get along with your cat(s).
-// - 3 You are looking for a cat that will get along with your dog(s)
-// - 4 You are looking for a cat that will be friendly with visitors.
-// - 5 You are looking for a social cat. One that likes to be where the people are.
-// - 6 You are looking for a cat that enjoys pets.
-// - 7 You are looking for a lapcat.
-// - 8 You are looking for a playful cat.
-// - 9 You are looking for a quiet cat.
-// - 10 You are looking for a cat that is vocal.
-
-// https://www.flyandlove.yoga/adoptable-cats

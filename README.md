@@ -20,7 +20,7 @@ Catster hopes to help you find your fur companion. Answer a few questions and we
 -------Instructions for homework
 
 - Scores to find most compatible
-    - Convert user scores into an array of numbers.
+    [x] Convert user scores into an array of numbers.
     - Compare the difference between the user and the cat. Difference between each question. Add up the differences into a totalDifference value, use the absolute value. Do this for all cats in the file
     - The closest match will be the cat with the least amount of difference.
     - Display the best match in a modal display
@@ -33,5 +33,5 @@ Catster hopes to help you find your fur companion. Answer a few questions and we
 [x] create the survey questions
 [x] create the adoptable cat profiles, with questions answered and pictures
 [ ] code the logic
-[ ] deploy to heroku
+[x] deploy to heroku
 
