@@ -1,5 +1,7 @@
 // GET route with /api/catster that will display the JSON file with all the possible cats
+
 // POST route to /api/catster will be used to handle incoming survey results. Needs to handle compatibility logic
+
 // LOAD DATA
 const catData = require("../data/cats");
 const personData = require("../data/persons");
@@ -16,7 +18,8 @@ module.exports = function(app){
     });
 
     app.post("/results", function(req,res){
-        
+        let purrfectCat;
+
         let newPerson = {
             name: req.body.name,
             photo: req.body.img,
@@ -41,18 +44,30 @@ module.exports = function(app){
     );
 
     function match(person, cats){
+        let diff = [ ];
         for(let i = 0; i < cats.length - 1; i++){
-            let diff = [ ];
+            let totalDiff = 0;
             //for each cat where i is the index for the single cat data
             for (let y = 0; y < cats[i].scores.length - 1; y++){
                 //get the scores in cat at i, and loop over each where y is the index for the current score
                 // console.log(cats[i].scores[y]);
                 //this does give a number
-                let compare = Math.abs(cats[i].scores[y] - person[y]);
-                diff.push(compare);
-            }
-            console.log("these are the differences between person and cat " + cats[i].name + "value: " + diff);
-        }
-    }
 
+                let compare = Math.abs(cats[i].scores[y] - person[y]);
+                totalDiff = totalDiff + compare;
+            }
+            diff.push(totalDiff);
+            console.log("cat " + cats[i].name + "  diff in score: " + totalDiff);
+            console.log("difference array: " + diff);
+            console.log("totalDiff: " + totalDiff);
+        }
+        
+    }
+    //find lowest number in array, get the index and the cat at that index is a match. If there are multiple matches, show others? or one randomly
 };
+
+// purrfectCat = Math.min.apply(null, totalDiff);
+// console.log("score match: " + purrfectCat);
+
+//lowest difference is the match
+//need to make sure form will only submit when completed. 

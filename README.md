@@ -21,7 +21,7 @@ Catster hopes to help you find your fur companion. Answer a few questions and we
 
 - Scores to find most compatible
     [x] Convert user scores into an array of numbers.
-    - Compare the difference between the user and the cat. Difference between each question. Add up the differences into a totalDifference value, use the absolute value. Do this for all cats in the file
+    [x] Compare the difference between the user and the cat. Difference between each question. Add up the differences into a totalDifference value, use the absolute value. Do this for all cats in the file
     - The closest match will be the cat with the least amount of difference.
     - Display the best match in a modal display
         - Show the name and picture of the closest match
