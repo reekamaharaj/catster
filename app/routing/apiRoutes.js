@@ -18,7 +18,6 @@ module.exports = function(app){
     });
 
     app.post("/results", function(req,res){
-        let purrfectCat;
 
         let newPerson = {
             name: req.body.name,
@@ -45,6 +44,7 @@ module.exports = function(app){
 
     function match(person, cats){
         let diff = [ ];
+        let lowestNum = 0;
         for(let i = 0; i < cats.length - 1; i++){
             let totalDiff = 0;
             //for each cat where i is the index for the single cat data
@@ -57,17 +57,39 @@ module.exports = function(app){
                 totalDiff = totalDiff + compare;
             }
             diff.push(totalDiff);
-            console.log("cat " + cats[i].name + "  diff in score: " + totalDiff);
-            console.log("difference array: " + diff);
-            console.log("totalDiff: " + totalDiff);
+            
+            lowestNum = Math.min(...diff);
+
+            console.log(diff + "");
+            let indices = findIndex(diff, lowestNum);
+
+            if (indices.length > 1){
+                let purrfectCat = [ ];
+                for (let i = 0; i < indices.length; i++){
+                    //get the information for other cats.
+                    let cat = JSON.stringify(cats[indices[i]]);
+                    purrfectCat.push(cat);
+                }
+                //modal with multiple cats info
+                console.log("Matched with multiple cats : " + purrfectCat);
+            }
+            else {
+                purrfectCat = cats[indices];
+                //modal with the matched cats info
+                //DONT FORGET TO ONLY ACCEPT FORM IF IT IS COMPLETE
+                console.log("Matched with :" + JSON.stringify(purrfectCat));
+            }
         }
         
     }
-    //find lowest number in array, get the index and the cat at that index is a match. If there are multiple matches, show others? or one randomly
+    
+    function findIndex(array, element){
+        let indices = [ ];
+        let index = array.indexOf(element);
+        while (index !=-1){
+            indices.push(index);
+            index = array.indexOf(element, index + 1);
+        }
+        return indices;
+    }
 };
-
-// purrfectCat = Math.min.apply(null, totalDiff);
-// console.log("score match: " + purrfectCat);
-
-//lowest difference is the match
-//need to make sure form will only submit when completed. 
