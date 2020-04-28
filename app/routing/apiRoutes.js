@@ -76,7 +76,7 @@ module.exports = function(app){
             else {
                 purrfectCat = cats[indices];
                 //modal with the matched cats info
-                //DONT FORGET TO ONLY ACCEPT FORM IF IT IS COMPLETE
+                results();
                 console.log("Matched with :" + JSON.stringify(purrfectCat));
             }
         }
@@ -91,5 +91,22 @@ module.exports = function(app){
             index = array.indexOf(element, index + 1);
         }
         return indices;
+    }
+
+    function results(){
+        let modalContainer = $(`<div class="modal-content relative m-auto bg-gray-100 w-4/5 shadow-lg">
+        <div class="p-4 bg-gray-800 text-white">
+            <span class="closeBtn float-right text-lg font-bold hover:text-gray-500 no-underline cursor-pointer">&times;</span>
+            <h2 class="block w-full text-center text-gray-darkest mb-6 text-4xl font-bold">Your purrfect match!</h2>
+        </div>
+        <div class="p-4 text-center">
+            <p>This cat</p>
+        </div>
+        <div class="p-4 text-center bg-gray-400">
+            <h3>Here are some other matches</h3>
+        </div>
+        </div>`);
+        $("#modal").append(modalContainer);
+        
     }
 };

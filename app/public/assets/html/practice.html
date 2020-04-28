@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+    
+    <!-- Need this -->
+<style>
+.modal-bg {
+    background-color: rgba(0,0,0,0.5);
+    z-index: -9999;
+}
+</style>
+
+<!-- will need to have it trigger after submit button... so on click of submit -->
+<button id="submit">Open Modal</button>
+
+<div id="modal" class="modal-bg transition-opacity duration-500 opacity-0 pt-16 fixed w-full h-full left-0 z-10 overflow-auto">
+    <div class="modal-content relative m-auto bg-gray-100 w-4/5 shadow-lg">
+    <div class="p-4 bg-gray-800 text-white">
+        <span class="closeBtn float-right text-lg font-bold hover:text-gray-500 no-underline cursor-pointer">&times;</span>
+        <h2 class="block w-full text-center text-gray-darkest mb-6 text-4xl font-bold">Your purrfect match!</h2>
+    </div>
+    <div class="p-4 text-center">
+        <p>This cat</p>
+    </div>
+    <div class="p-4 text-center bg-gray-400">
+        <h3>Here are some other matches</h3>
+    </div>
+    </div>
+</div>
+
+<script>
+var modal = document.querySelector("#modal");
+var openBtn = document.querySelector("#submit");
+var closeBtn = document.querySelector(".closeBtn");
+
+openBtn.onclick = function() {
+    modal.classList.add('opacity-100');
+    modal.classList.add('z-50');
+}
+
+closeBtn.onclick = function() {
+    modal.classList.remove('opacity-100');
+    modal.classList.remove('z-50');
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+    modal.classList.remove('opacity-100');
+    modal.classList.remove('z-50');
+    }
+}
+</script>
+</body>
+</html>
