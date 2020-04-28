@@ -5,6 +5,7 @@
 // LOAD DATA
 const catData = require("../data/cats");
 const personData = require("../data/persons");
+const purrfectCatData = require("../data/persons");
 const path = require("path");
 
 //Routing
@@ -15,6 +16,10 @@ module.exports = function(app){
 
     app.get("/api/persons", function(_req,res){
         res.json(personData);
+    });
+
+    app.get("/api/purrfectCat", function(_req,res){
+        res.json(purrfectCatData);
     });
 
     app.post("/results", function(req,res){
@@ -38,7 +43,7 @@ module.exports = function(app){
 
         personData.push(newPerson);
         match(newPerson.scores, catData);
-        res.sendFile(path.join(__dirname, "../public/assets/html/home.html"));
+        res.redirect('/results');
         }
     );
 
@@ -59,8 +64,6 @@ module.exports = function(app){
             diff.push(totalDiff);
             
             lowestNum = Math.min(...diff);
-
-            console.log(diff + "");
             let indices = findIndex(diff, lowestNum);
 
             if (indices.length > 1){
@@ -71,13 +74,12 @@ module.exports = function(app){
                     purrfectCat.push(cat);
                 }
                 //modal with multiple cats info
-                console.log("Matched with multiple cats : " + purrfectCat);
+                purrfectCatData.push(purrfectCat);
             }
             else {
                 purrfectCat = cats[indices];
                 //modal with the matched cats info
-                results();
-                console.log("Matched with :" + JSON.stringify(purrfectCat));
+                purrfectCatData.push(purrfectCat);
             }
         }
         
@@ -91,22 +93,5 @@ module.exports = function(app){
             index = array.indexOf(element, index + 1);
         }
         return indices;
-    }
-
-    function results(){
-        let modalContainer = $(`<div class="modal-content relative m-auto bg-gray-100 w-4/5 shadow-lg">
-        <div class="p-4 bg-gray-800 text-white">
-            <span class="closeBtn float-right text-lg font-bold hover:text-gray-500 no-underline cursor-pointer">&times;</span>
-            <h2 class="block w-full text-center text-gray-darkest mb-6 text-4xl font-bold">Your purrfect match!</h2>
-        </div>
-        <div class="p-4 text-center">
-            <p>This cat</p>
-        </div>
-        <div class="p-4 text-center bg-gray-400">
-            <h3>Here are some other matches</h3>
-        </div>
-        </div>`);
-        $("#modal").append(modalContainer);
-        
     }
 };

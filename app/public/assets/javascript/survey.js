@@ -15,10 +15,6 @@ let questionContainer;
 let question;
 let answerArray = [];
 
-$(".document").ready(function () {
-    popSurvey();
-});
-
 function popSurvey() {
     for (i = 0; i < surveyQuestions.length; i++) {
         questionContainer = undefined;
