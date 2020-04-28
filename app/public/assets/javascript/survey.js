@@ -34,7 +34,7 @@ function popSurvey() {
             i +
             '" id="q' +
             i +
-            '"><option value="" selected disabled hidden>Select an Option</option><option value="1">Strongly Disagree</option><option value="2">Disagree</option><option value="3">Neutral</option><option value="4">Agree</option><option value="5">Strongly Agree</option></select>';
+            '" required><option value="" selected disabled hidden>Select an Option</option><option value="1">Strongly Disagree</option><option value="2">Disagree</option><option value="3">Neutral</option><option value="4">Agree</option><option value="5">Strongly Agree</option></select>';
 
         questionContainer.append(question);
         $("#survey").append(questionContainer);
