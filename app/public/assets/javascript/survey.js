@@ -35,4 +35,6 @@ function popSurvey() {
         questionContainer.append(question);
         $("#survey").append(questionContainer);
     }
+    let submitbtn = "<button class='submit block bg-black hover:bg-gray-dark text-white uppercase text-lg mx-auto p-4 rounded'type='submit' id='submit'>Submit</button>";
+    $("#survey").append(submitbtn);
 }

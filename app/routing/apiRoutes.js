@@ -6,7 +6,6 @@
 const catData = require("../data/cats");
 const personData = require("../data/persons");
 const purrfectCatData = require("../data/persons");
-const path = require("path");
 
 //Routing
 module.exports = function(app){
