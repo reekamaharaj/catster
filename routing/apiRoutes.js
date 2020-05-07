@@ -17,11 +17,19 @@ module.exports = function(app){
         res.json(personData);
     });
 
-    app.get("/api/purrfectCat", function(_req,res){
-        res.json(purrfectCatData);
+
+    app.get("/", (req, res) => {
+        res.render("home");
     });
 
-    app.post("/results", function(req,res){
+    app.get("/survey", (req, res) => {
+        res.render("survey");
+    });
+
+    app.get("*", (req, res) => {
+        res.render("home");
+    });
+    app.post("/survey", function(req,res){
 
         let newPerson = {
             name: req.body.name,
@@ -93,4 +101,5 @@ module.exports = function(app){
         }
         return indices;
     }
+
 };

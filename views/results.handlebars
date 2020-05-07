@@ -1,0 +1,51 @@
+<div class="bg-gray-300">
+    <div class="p-8 text-5xl text-center bg-gray-800 text-white">
+        <h1>Catster</h1>
+    </div>
+    <div class="text-center text-3xl p-8" id="results">
+        <h2>Your purrfect Match</h2>
+    </div>
+    <div class="text-center text-3xl p-8">
+        <h2>You also matched might be interested in...</h2>
+    </div>
+</div>
+
+<script type="text/javascript" src="/assets/javascript/survey.js"></script>
+<script>
+$(".document").ready(function () {
+    console.log("on load");
+    popResults();
+});
+
+function popResults(){
+    console.log("popResults started")
+    $.ajax({ url: "/api/purrfectCat"}).then(function(catData){
+        console.log("ajax running");
+        if (catData.length === 1){
+            let catResults = $("#results");
+            let cat = $("<li class='cat mt-4'>");
+                cat.append(
+                $("<h2>").text("Your match!"),
+                $("<hr>"),
+                $("<h2>").text("Name: " + catData[0].name),
+                $("<img src='" + catData[0].photo + "'>")
+                );
+        }
+        else {
+            for (let i = 0; i <catData.length; i++){
+            let catResults = $("#results");
+            let cat = $("<li class='cat mt-4'>");
+            
+            cat.append(
+                $("<h2>").text("Your match!"),
+                $("<hr>"),
+                $("<h2>").text("Name: " + catData[i].name),
+                $("<img src='" + catData[i].photo + "'>")
+                );
+            }
+            catResults.append(cat);
+        }
+    });
+}
+
+</script>
