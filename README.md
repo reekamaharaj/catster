@@ -15,6 +15,7 @@ Click the start survey button, fill out the form and you will be matched with an
 - Javascript
 - Node.js
 - Express
+- Handlebars
 - Heroku
 
 ## Role in Development
