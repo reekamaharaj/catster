@@ -1,9 +1,7 @@
 <div style="background-color: #FF914C;">
     <div class="text-center text-3xl p-8" id="results">
-        <h2>Your purrfect Match</h2>
-    </div>
-    <div class="text-center text-3xl p-8" id="match">
-        <h2>You also matched might be interested in...</h2>
+        <h1>Your purrfect Match: {{name}}</h1>
+        <img class="m-auto rounded" src={{photo}} alt="Cat image">
     </div>
 </div>
 
@@ -16,33 +14,9 @@ $(".document").ready(function () {
 
 function popResults(){
     console.log("popResults started")
-    $.ajax({ url: "/api/purrfectCat"}).then(function(catData){
-        console.log("ajax running");
-        if (catData.length === 1){
-            let catResults = $("#results");
-            let cat = $("<li class='cat mt-4'>");
-                cat.append(
-                $("<h2>").text("Your match!"),
-                $("<hr>"),
-                $("<h2>").text("Name: " + catData[0].name),
-                $("<img src='" + catData[0].photo + "'>")
-                );
-        }
-        else {
-            for (let i = 0; i <catData.length; i++){
-            let catResults = $("#results");
-            let cat = $("<li class='cat mt-4'>");
-            
-            cat.append(
-                $("<h2>").text("Your match!"),
-                $("<hr>"),
-                $("<h2>").text("Name: " + catData[i].name),
-                $("<img src='" + catData[i].photo + "'>")
-                );
-            }
-            catResults.append(cat);
-        }
+    $.ajax({ url: "/api/match"}).then(function(catData){
+        console.log("ajax ran");
     });
 }
-
 </script>
+
